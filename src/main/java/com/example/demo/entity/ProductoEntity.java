@@ -7,18 +7,24 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name="PRODUCTO")
 public class ProductoEntity implements Serializable{
-	private static final long serialVersionUID = -2170897015344177815L;
+
+	private static final long serialVersionUID = -4694926099236184562L;
 
 	@Id
   	@Column(name = "ID_PRODUCTO")
@@ -29,15 +35,17 @@ public class ProductoEntity implements Serializable{
   	@Column(name = "NOMBRE")
   	private String nombre;
   	
-  	@Column(name = "DESCRIPCION")
-  	private String descripcion;
-
   	@Column(name = "PRECIO")
   	private Double precio;
 
-  	@Column(name = "STOCK")
-  	private Double stock;
+  	@Column(name = "CANTIDAD")
+  	private Double cantidad;
 
   	@Column(name = "ESTADO")
-  	private String estado;
+  	@Builder.Default
+  	private char estado = '1';
+
+  	@ManyToOne
+    @JoinColumn(name = "IDCATEGORIA",  nullable = false)
+    private CategoriaEntity categoria;
 }
