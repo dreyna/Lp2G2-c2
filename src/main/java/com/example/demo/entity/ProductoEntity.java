@@ -32,16 +32,16 @@ public class ProductoEntity implements Serializable{
     @SequenceGenerator(sequenceName = "SEQ_PRODUCTO", allocationSize = 1, name = "seqProducto")
 	private Long id;
   
-  	@Column(name = "NOMBRE")
+  	@Column(name = "NOMBRE", nullable = false)
   	private String nombre;
   	
   	@Column(name = "PRECIO")
-  	private Double precio;
+  	private double precio;
 
   	@Column(name = "CANTIDAD")
-  	private Double cantidad;
+  	private int cantidad;
 
-  	@Column(name = "ESTADO")
+  	@Column(name = "ESTADO", nullable = false)
   	@Builder.Default
   	private char estado = '1';
 
