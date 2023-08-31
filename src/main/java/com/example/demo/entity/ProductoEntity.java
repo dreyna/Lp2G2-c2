@@ -27,7 +27,7 @@ public class ProductoEntity implements Serializable{
 	private static final long serialVersionUID = -4694926099236184562L;
 
 	@Id
-  	@Column(name = "ID_PRODUCTO")
+  	@Column(name = "IDPRODUCTO")
   	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProducto")
     @SequenceGenerator(sequenceName = "SEQ_PRODUCTO", allocationSize = 1, name = "seqProducto")
 	private Long id;
